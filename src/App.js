@@ -26,13 +26,25 @@ const dummy = [
     id: 4,
     emotion: 4,
     content: "오늘의 일기4",
-    date: 1679658758360,
+    date: 1680432365124,
   },
   {
     id: 5,
     emotion: 5,
     content: "오늘의 일기5",
-    date: 1679658758363,
+    date: 1680432365128,
+  },
+  {
+    id: 6,
+    emotion: 1,
+    content: "오늘의 일기6",
+    date: 1682899200000,
+  },
+  {
+    id: 7,
+    emotion: 3,
+    content: "오늘의 일기7",
+    date: 1682899200004,
   },
 ];
 

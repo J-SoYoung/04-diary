@@ -26,6 +26,8 @@ body {
 
 .App {
   height: 100vh;
+  padding: 16px;
+  box-sizing: border-box;
 }
 
 @media (min-width: 650px) {
