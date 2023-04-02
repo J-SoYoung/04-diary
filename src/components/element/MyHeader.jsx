@@ -16,7 +16,8 @@ export default MyHeader;
 const HeaderBox = styled.div`
   display: flex;
   align-items: center;
-  padding: 20px;
+  margin-bottom: 16px;
+  padding: 16px 0;
   box-sizing: border-box;
   border-bottom: 1px solid #e2e2e2;
 `;

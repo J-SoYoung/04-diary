@@ -5,11 +5,20 @@ import { useNavigate } from "react-router-dom";
 
 function DiaryItem({ diary }) {
   const navigate = useNavigate();
-  console.log(diary);
+  const day = new Date(diary.date).toISOString().split("T")[0];
+  const time = new Date(diary.date).toISOString().split("T")[1].split(".")[0];
+
   return (
     <DiaryItemBox>
       <DiaryImg src={`/img/emotion${diary.emotion}.png`} />
-      <DiaryContent>{diary.content}</DiaryContent>
+      <DiaryContent>
+        <DiaryDate>
+          <span>
+            {day} / {time}
+          </span>
+        </DiaryDate>
+        <DiaryText>{diary.content}</DiaryText>
+      </DiaryContent>
       <MyButton
         text="수정하기"
         onClick={() => {
@@ -28,10 +37,15 @@ const DiaryItemBox = styled.div`
 const DiaryImg = styled.img`
   width: 50px;
 `;
+const DiaryDate = styled.div`
+  font-size: 12px;
+  color: gray;
+`;
 const DiaryContent = styled.div`
   border: 1px solid red;
   width: 100%;
   padding: 0 10px;
   box-sizing: border-box;
 `;
+const DiaryText = styled.div``;
 export default DiaryItem;
