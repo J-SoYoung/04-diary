@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useReducer, useRef, useState } from "react";
 import "./App.css";
 import AppRoute from "./AppRoute";
 
-export const DiaryStateContext = React.createContext();
 const dummy = [
   {
     id: 1,
@@ -48,12 +47,84 @@ const dummy = [
   },
 ];
 
+const reducer = (state, action) => {
+  let newState = [];
+  switch (action.type) {
+    case "INIT": {
+      return action.data;
+    }
+    case "CREATE": {
+      const newItem = {
+        ...action.data,
+      };
+      newState = [newItem, ...state];
+      break;
+    }
+    case "EDIT": {
+      newState = state.map((s) =>
+        s.id === action.data.id ? { ...action.data } : s
+      );
+      break;
+    }
+    case "REMOVE": {
+      newState = state.filter((s) => s.id !== action.targetId);
+      break;
+    }
+    default:
+      return state;
+  }
+  return newState;
+};
+
+export const DiaryStateContext = React.createContext();
+export const DiaryDispatchContext = React.createContext();
+
 function App() {
-  const [data, setData] = useState(dummy);
+  const [data, dispatch] = useReducer(reducer, dummy);
+  const dataId = useRef(0);
+
+  const onCreate = (date, content, emotion) => {
+    dispatch({
+      type: "CREATE",
+      data: {
+        id: dataId.current,
+        date: new Date(date).getTime(),
+        content,
+        emotion,
+      },
+    });
+    dataId.current += 1;
+  };
+
+  // REMOVE
+  const onRemove = (targetId) => {
+    dispatch({ type: "REMOVE", targetId });
+  };
+  // EIDT
+  const onEdit = (targetId, date, content, emotion) => {
+    dispatch({
+      type: "EDIT",
+      data: {
+        id: targetId,
+        date: new Date(date).getTime(),
+        content,
+        emotion,
+      },
+    });
+  };
+
   return (
     <div className="App">
       <DiaryStateContext.Provider value={data}>
-        <AppRoute />
+        <DiaryDispatchContext.Provider
+          value={{
+            onCreate,
+            onEdit,
+            onRemove,
+          }}
+        >
+          <AppRoute />
+        </DiaryDispatchContext.Provider>
       </DiaryStateContext.Provider>
     </div>
   );

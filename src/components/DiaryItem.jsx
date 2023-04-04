@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import MyButton from "./element/MyButton";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function DiaryItem({ diary }) {
   const navigate = useNavigate();
@@ -9,15 +9,19 @@ function DiaryItem({ diary }) {
   const time = new Date(diary.date).toISOString().split("T")[1].split(".")[0];
 
   return (
-    <DiaryItemBox>
+    <DiaryItemBox
+      onClick={() => {
+        navigate(`/detail/${diary.id}`);
+      }}
+    >
       <DiaryImg src={`/img/emotion${diary.emotion}.png`} />
       <DiaryContent>
+        <DiaryText>{diary.content}</DiaryText>
         <DiaryDate>
           <span>
             {day} / {time}
           </span>
         </DiaryDate>
-        <DiaryText>{diary.content}</DiaryText>
       </DiaryContent>
       <MyButton
         text="수정하기"
@@ -32,20 +36,22 @@ function DiaryItem({ diary }) {
 const DiaryItemBox = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   margin-bottom: 10px;
 `;
 const DiaryImg = styled.img`
   width: 50px;
+  height: 50px;
 `;
 const DiaryDate = styled.div`
   font-size: 12px;
   color: gray;
 `;
 const DiaryContent = styled.div`
-  border: 1px solid red;
   width: 100%;
   padding: 0 10px;
   box-sizing: border-box;
 `;
 const DiaryText = styled.div``;
+
 export default DiaryItem;

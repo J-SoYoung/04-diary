@@ -33,7 +33,7 @@ function ControlMemu({ value, onChange, optionList }) {
   );
 }
 
-function DiaryList({ diaryList }) {
+function  DiaryList({ diaryList }) {
   const navigate = useNavigate();
 
   const [sortType, setSortType] = useState("latest");
