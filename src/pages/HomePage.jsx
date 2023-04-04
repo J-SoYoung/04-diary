@@ -34,14 +34,12 @@ const HomePage = () => {
       new Date(curDate.getFullYear(), curDate.getMonth() - 1),
       curDate.getDate()
     );
-    console.log("감소");
   };
   const increaseMonth = () => {
     setcurDate(
       new Date(curDate.getFullYear(), curDate.getMonth() + 1),
       curDate.getDate()
     );
-    console.log("증가");
   };
 
   return (

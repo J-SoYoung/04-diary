@@ -22,6 +22,7 @@ MyButton.defaultProps = {
 
 const Button = styled.button`
   cursor: pointer;
+  height: 45px;
   border: none;
   border-radius: 8px;
   padding: 10px 20px;
