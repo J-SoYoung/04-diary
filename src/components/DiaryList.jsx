@@ -33,26 +33,26 @@ function ControlMemu({ value, onChange, optionList }) {
   );
 }
 
-function  DiaryList({ diaryList }) {
+function DiaryList({ diaryList }) {
   const navigate = useNavigate();
 
   const [sortType, setSortType] = useState("latest");
   const [emotionType, setEmotionType] = useState("all");
 
   const sortDiaryList = () => {
-    const emotionFilter = (item) => {
-      if (emotionType === "good") {
-        return parseInt(item.emotion) <= 3;
-      } else {
-        return parseInt(item.emotion) > 3;
-      }
-    };
-
     const compare = (a, b) => {
       if (sortType === "latest") {
         return parseInt(b.date) - parseInt(a.date);
       } else {
         return parseInt(a.date) - parseInt(b.date);
+      }
+    };
+
+    const emotionFilter = (item) => {
+      if (emotionType === "good") {
+        return parseInt(item.emotion) <= 3;
+      } else {
+        return parseInt(item.emotion) > 3;
       }
     };
 
@@ -100,16 +100,15 @@ const ControlBar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px ;
+  margin-bottom: 16px;
   div {
-    flex: 1 
-    background-color: red;
+    flex: 1;
     select {
       margin-right: 10px;
     }
   }
-  button{
-    flex:1
+  button {
+    flex: 1;
   }
 `;
 

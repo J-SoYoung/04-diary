@@ -41,6 +41,7 @@ const NewPage = ({ isEdit, editOriginData }) => {
     }
     if (!isEdit) {
       onCreate(today, textarea, emotion);
+      // onCreate(today, textarea, emotion);
       console.log("일기추가", today, textarea, emotion);
       navigate(-1, { replace: true });
     } else {
@@ -68,6 +69,7 @@ const NewPage = ({ isEdit, editOriginData }) => {
         <input
           type="date"
           value={today || ""}
+          // value={today || ""}
           onChange={(e) => setToday(e.target.value)}
         />
       </Box>
@@ -95,12 +97,16 @@ const NewPage = ({ isEdit, editOriginData }) => {
       </Box>
       <ButtonBox>
         <MyButton
-          text="취소가기"
+          text="취소하기"
           onClick={() => {
             navigate(-1);
           }}
         />
-        <MyButton text="작성완료" btnType="positive" onClick={handleSubmit} />
+        <MyButton
+          text={isEdit ? "수정완료" : "작성완료"}
+          btnType="positive"
+          onClick={handleSubmit}
+        />
       </ButtonBox>
     </>
   );

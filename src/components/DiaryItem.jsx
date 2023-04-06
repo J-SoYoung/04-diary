@@ -6,23 +6,22 @@ import { useNavigate, useParams } from "react-router-dom";
 function DiaryItem({ diary }) {
   const navigate = useNavigate();
   const day = new Date(diary.date).toISOString().split("T")[0];
-  const time = new Date(diary.date).toISOString().split("T")[1].split(".")[0];
 
   return (
-    <DiaryItemBox
-      onClick={() => {
-        navigate(`/detail/${diary.id}`);
-      }}
-    >
-      <DiaryImg src={`/img/emotion${diary.emotion}.png`} />
-      <DiaryContent>
-        <DiaryText>{diary.content}</DiaryText>
-        <DiaryDate>
-          <span>
-            {day} / {time}
-          </span>
-        </DiaryDate>
-      </DiaryContent>
+    <DiaryItemBox>
+      <div
+        onClick={() => {
+          navigate(`/detail/${diary.id}`);
+        }}
+      >
+        <DiaryImg src={`/img/emotion${diary.emotion}.png`} />
+        <DiaryContent>
+          <DiaryText>{diary.content}</DiaryText>
+          <DiaryDate>
+            <span>{day}</span>
+          </DiaryDate>
+        </DiaryContent>
+      </div>
       <MyButton
         text="수정하기"
         onClick={() => {
@@ -38,6 +37,13 @@ const DiaryItemBox = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 10px;
+  & > div {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: centert;
+    cursor: pointer;
+  }
 `;
 const DiaryImg = styled.img`
   width: 50px;
