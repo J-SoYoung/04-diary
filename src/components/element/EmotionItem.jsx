@@ -11,7 +11,6 @@ function EmotionItem({
   return (
     <EmotionBox
       onClick={() => {
-        console.log(emotion_id);
         onClick(emotion_id);
       }}
       isSelect={isSelect}
@@ -36,25 +35,5 @@ const EmotionBox = styled.div`
     width: 70px;
     /* color props받아서 사용 */
   }
-`;
-const EmotionItem_on_1 = styled(EmotionBox)`
-  background-color: #64c964;
-  color: white;
-`;
-const EmotionItem_on_2 = styled(EmotionBox)`
-  background-color: #9dd772;
-  color: white;
-`;
-const EmotionItem_on_3 = styled(EmotionBox)`
-  background-color: #fdce17;
-  color: white;
-`;
-const EmotionItem_on_4 = styled(EmotionBox)`
-  background-color: #fd8446;
-  color: white;
-`;
-const EmotionItem_on_5 = styled(EmotionBox)`
-  background-color: #fd565f;
-  color: white;
 `;
 export default EmotionItem;

@@ -22,7 +22,8 @@ const HomePage = () => {
         curDate.getFullYear(),
         curDate.getMonth() + 1,
         0
-      );
+      ).getTime();
+
       setCurDiaryList(
         diaryList.filter((d) => firstDay <= d.date && d.date <= lastDay)
       );
