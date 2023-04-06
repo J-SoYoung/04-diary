@@ -1,5 +1,7 @@
-# REACT DIARY MINI PROJECT
-react hooks의 사용법을 공부합니다. 
+# REACT DIARY MINI PROJECT STUDY
+4월의 실전 프로젝트를 위해서 react hooks의 사용법을 공부합니다. <br>
+📕notion : https://www.notion.so/fun-blog/PJ-4-03a567f49ea142cdaf22d2e124131696<br>
+<br>
 
 ### useState
 - 컴포넌트에서 상태관리가 필요한 값을 저장하여 사용하는 hook입니다.
